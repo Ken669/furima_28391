@@ -1,24 +1,69 @@
-# README
+# table design
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column             | Type   | Options     |
+| --------           | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| password           | string | null: false |
+| family_name        | string | null: false |
+| personal_name      | string | null: false |
+| family_name_kana   | string | null: false |
+| personal_name_kana | string | null: false |
+| birth_year         | integer | null: false |
+| birth_month        | integer | null: false |
+| birth_date         | integer | null: false |
 
-* Ruby version
+### Association
+- has_many :items
+- has_many :comments
+- has_many :transactions
 
-* System dependencies
+## items table
 
-* Configuration
+| Column            | Type   | Options     |
+| --------          | ------ | ----------- |
+| name              | string | null: false |
+| detail            | text   | null: false |
+| category          | integer | null: false |
+| condition         | integer | null: false |
+| shipping_fee      | integer | null: false |
+| shipping_from     | integer | null: false |
+| shipping_schedule | integer | null: false |
+| price             | integer | null: false |
+| user_id           | integer | null: false, foreign_key: true |
 
-* Database creation
+### Association
+- has_many :comments
+- belongs_to :user
 
-* Database initialization
+## comments table
 
-* How to run the test suite
+| Column   | Type    | Options     |
+| -------- | ------  | ----------- |
+| comment  | text    | null: false |
+| item_id  | integer | null: false, foreign_key: true |
+| user_id  | integer | null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- belongs_to :item
+- belongs_to :user
 
-* Deployment instructions
+## transactions table
 
-* ...
+| Column        | Type    | Options     |
+| --------      | ------  | ----------- |
+| price         | integer | null: false |
+| postal_code   | string  | null: false |
+| prefecture    | integer | null: false |
+| city          | string  | null: false |
+| street        | string  | null: false |
+| building_name | string  |             |
+| phone         | integer | null: false |
+| item_id  | integer | null: false, foreign_key: true |
+| user_id  | integer | null: false, foreign_key: true |
+
+### Association
+- belongs_to :item
+- belongs_to :user
