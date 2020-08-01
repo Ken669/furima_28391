@@ -20,6 +20,7 @@
 - has_many :comments
 - has_many :transactions
 
+
 ## items table
 
 | Column            | Type   | Options     |
@@ -35,8 +36,14 @@
 | user_id           | integer | null: false, foreign_key: true |
 
 ### Association
-- has_many :comments
 - belongs_to :user
+- has_one_attached :image(active storage)
+- has_many :comments
+- has_one :transaction
+
+#### ActiveHash
+:category, :condition, :shipping_fee, :shipping_from, :shipping_schedule
+
 
 ## comments table
 
@@ -49,6 +56,7 @@
 ### Association
 - belongs_to :item
 - belongs_to :user
+
 
 ## transactions table
 
