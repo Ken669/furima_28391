@@ -1,24 +1,89 @@
-# README
+# table design
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column             | Type   | Options     |
+| --------           | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| password           | string | null: false |
+| family_name        | string | null: false |
+| personal_name      | string | null: false |
+| family_name_kana   | string | null: false |
+| personal_name_kana | string | null: false |
+| birthday           | date   | null: false |
 
-* Ruby version
+### Association
+- has_many :items
+- has_many :comments
+- has_many :purchases
+- has_one :address
 
-* System dependencies
 
-* Configuration
+## items table
 
-* Database creation
+| Column            | Type    | Options     |
+| --------          | ------  | ----------- |
+| name              | string  | null: false |
+| detail            | text    | null: false |
+| category          | integer | null: false |
+| condition         | integer | null: false |
+| shipping_fee      | integer | null: false |
+| shipping_from     | integer | null: false |
+| shipping_schedule | integer | null: false |
+| price             | integer | null: false |
+| user           | references | null: false, foreign_key: true |
 
-* Database initialization
+### Association
+- belongs_to :user
+- has_one_attached :image(active storage)
+- has_many :comments
+- has_one :purchase
+- has_one :address
 
-* How to run the test suite
+#### ActiveHash
+:category, :condition, :shipping_fee, :shipping_from, :shipping_schedule
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## comments table
 
-* ...
+| Column   | Type    | Options     |
+| -------- | ------  | ----------- |
+| comment  | text    | null: false |
+| item  | references | null: false, foreign_key: true |
+| user  | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :item
+- belongs_to :user
+
+
+## purchases table
+
+| Column     | Type       | Options     |
+| --------   | ------     | ----------- |
+| item       | references | null: false, foreign_key: true |
+| user       | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :item
+- belongs_to :user
+
+
+## addresses table
+
+| Column        | Type    | Options     |
+| --------      | ------  | ----------- |
+| postal_code   | string  | null: false |
+| prefecture    | integer | null: false |
+| city          | string  | null: false |
+| street        | string  | null: false |
+| building_name | string  |             |
+| phone         | string  | null: false |
+| user       | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+
+#### ActiveHash
+:prefecture
