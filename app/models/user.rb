@@ -6,10 +6,6 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    # validates :email, uniqueness: true, format: {
-    #   with: /.+@.+/,
-    #   message: 'invalid: The email you typed in is already used.'
-    # }
     validates :password, format: {
       with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}\z/i,
       message: 'invalid: alphabet and digit are only permitted and both required.'
