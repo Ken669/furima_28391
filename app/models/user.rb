@@ -12,7 +12,7 @@ class User < ApplicationRecord
     # }
     validates :password, format: {
       with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}\z/i,
-      message: 'invalid: alphabet and digit are only permitted or both required.'
+      message: 'invalid: alphabet and digit are only permitted and both required.'
     }
     validates :first_name, format: {
       with: /\A[ぁ-んァ-ン一-龥]+\z/, 

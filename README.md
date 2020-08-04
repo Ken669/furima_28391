@@ -77,7 +77,7 @@
 | postal_code   | string  | null: false |
 | prefecture    | integer | null: false |
 | city          | string  | null: false |
-| street        | string  | null: false |
+| town          | string  | null: false |
 | building_name | string  |             |
 | phone         | string  | null: false |
 | user       | references | null: false, foreign_key: true |
