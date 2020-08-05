@@ -1,0 +1,2 @@
+class ShippingSchedule < ApplicationRecord
+end
