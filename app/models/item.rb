@@ -12,7 +12,7 @@ class Item < ApplicationRecord
   has_one :purchase
   has_one :address
 
-  validates :name, :detail, presence: true
+  validates :image, :name, :detail, presence: true
 
   with_options numericality: {
     other_than: 0,

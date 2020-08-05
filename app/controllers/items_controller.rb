@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :redirect_to_sign_in, unless: :current_user, except: [:index]
+
   def index
     @items = Item.includes(:user)
   end
@@ -17,6 +19,10 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def redirect_to_sign_in
+    redirect_to new_user_session_path
+  end
 
   def item_params
     params.require(:item).permit(
