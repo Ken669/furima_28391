@@ -1,2 +1,3 @@
-class ShippingFrom < ApplicationRecord
+class ShippingFrom < ActiveHash::Base
+  self.data = []
 end

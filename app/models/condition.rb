@@ -1,2 +1,3 @@
-class Condition < ApplicationRecord
+class Condition < ActiveHash::Base
+  self.data = []
 end

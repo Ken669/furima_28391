@@ -1,2 +1,3 @@
-class Category < ApplicationRecord
+class Category < ActiveHash::Base
+  self.data = []
 end
