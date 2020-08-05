@@ -1,6 +1,7 @@
 'use strict';
 setInterval(() => {
-  if(window.location.pathname === '/items/new'){
+  const currentPath = window.location.pathname;
+  if(currentPath === '/items/new' || currentPath === '/items'){
     const price = document.getElementById('item-price');
     const tax = document.getElementById('add-tax-price');
     const profit = document.getElementById('profit');

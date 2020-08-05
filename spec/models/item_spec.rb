@@ -57,7 +57,7 @@ RSpec.describe Item, type: :model do
         expect(@item.valid?).to eq false
       end
       it 'price is greater than 9,999,999' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         expect(@item.valid?).to eq false
       end
       it 'price is blank' do
