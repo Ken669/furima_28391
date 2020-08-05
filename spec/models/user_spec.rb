@@ -25,12 +25,12 @@ RSpec.describe User, type: :model do
         @user.email = Faker::Internet.password
         expect(@user.valid?).to eq false
       end
-      it "email is already used" do
+      it 'email is already used' do
         @user.email = @another.email
         expect(@user.valid?).to eq false
       end
 
-      it "password is empty" do
+      it 'password is empty' do
         @user.password = nil
         expect(@user.valid?).to eq false
       end
@@ -39,23 +39,23 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = @user.password
         expect(@user.valid?).to eq false
       end
-      it "password field is filled with letters that are not alphabet or digit" do
+      it 'password field is filled with letters that are not alphabet or digit' do
         @user.password = Faker::Internet.mac_address
         @user.password_confirmation = @user.password
         expect(@user.valid?).to eq false
       end
-      it "password field is filled with digits all" do
+      it 'password field is filled with digits all' do
         @user.password = Faker::Number.number(digits: 6)
         @user.password_confirmation = @user.password
         expect(@user.valid?).to eq false
       end
-      it "password field is filled with alphabetical letters all" do
+      it 'password field is filled with alphabetical letters all' do
         @user.password = Faker::Name.initials(number: 6)
         @user.password_confirmation = @user.password
         expect(@user.valid?).to eq false
       end
       it "password confirmation doesn't match" do
-        @user.password_confirmation = ""
+        @user.password_confirmation = ''
         expect(@user.valid?).to eq false
       end
 
