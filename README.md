@@ -22,17 +22,17 @@
 
 ## items table
 
-| Column               | Type    | Options     |
-| --------             | ------  | ----------- |
-| name                 | string  | null: false |
-| detail               | text    | null: false |
-| category_id          | integer | null: false |
-| condition_id         | integer | null: false |
-| shipping_fee_id      | integer | null: false |
-| prefecture_id        | integer | null: false |
-| shipping_schedule_id | integer | null: false |
-| price                | integer | null: false |
-| user              | references | null: false, foreign_key: true |
+| Column            | Type    | Options     |
+| --------          | ------  | ----------- |
+| name              | string  | null: false |
+| detail            | text    | null: false |
+| category          | integer | null: false |
+| condition         | integer | null: false |
+| shipping_fee      | integer | null: false |
+| prefecture        | integer | null: false |
+| shipping_schedule | integer | null: false |
+| price             | integer | null: false |
+| user           | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -42,7 +42,7 @@
 - has_one :address
 
 #### ActiveHash
-:category, :condition, :shipping_fee, :shipping_from, :shipping_schedule
+:category, :condition, :shipping_fee, :prefecture, :shipping_schedule
 
 
 ## comments table
