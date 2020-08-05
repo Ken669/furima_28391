@@ -18,11 +18,11 @@ class Item < ApplicationRecord
     other_than: 0,
     message: "can't be blank"
   } do
-    validates :category
-    validates :condition
-    validates :shipping_fee
-    validates :prefecture
-    validates :shipping_schedule
+    validates :category_id
+    validates :condition_id
+    validates :shipping_fee_id
+    validates :prefecture_id
+    validates :shipping_schedule_id
   end
 
   validates :price, numericality: {
