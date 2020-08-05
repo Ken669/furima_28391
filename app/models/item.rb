@@ -9,7 +9,8 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_many :comments
-  has_one :purchase, :address
+  has_one :purchase
+  has_one :address
 
   validates :name, :detail, presence: true
 
