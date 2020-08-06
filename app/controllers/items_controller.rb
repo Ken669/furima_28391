@@ -20,19 +20,15 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
   end
 
   def destroy
-    
   end
 
   def edit
-    
   end
 
   def update
-    
   end
 
   private
