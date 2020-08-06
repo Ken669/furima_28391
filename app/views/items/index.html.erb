@@ -2,19 +2,19 @@
 <div class='main'>
 
   <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
-  <%= render 'shared/index_1' %>
+  <%= render 'shared/index/index_1' %>
   <%# //画面上部の「人生を変えるフリマアプリ」帯部分  %>
 
   <%# FURIMAが選ばれる3つの理由部分 %>
-  <%= render 'shared/index_2' %>
+  <%= render 'shared/index/index_2' %>
   <%# //FURIMAが選ばれる3つの理由部分 %>
 
   <%# 画面中央の「会員数日本一位」帯部分 %>
-  <%= render 'shared/index_3' %>
+  <%= render 'shared/index/index_3' %>
   <%# //画面中央の「会員数日本一位」帯部分 %>
 
   <%# FURIMAの特徴 %>
-  <%= render 'shared/index_4' %>
+  <%= render 'shared/index/index_4' %>
   <%# //FURIMAの特徴 %>
 
   <%# 商品一覧 %>
@@ -25,12 +25,12 @@
     <ul class='item-lists'>
       <% if @items %>
         <% @items.each do |item| %>
-          <%= render partial: 'shared/itemlist', locals: {item: item} %>
+          <%= render partial: 'shared/index/itemlist', locals: {item: item} %>
         <% end %>
       <% else %>
         <%# 商品がない場合のダミー %>
-        <%= render 'shared/index_5' %>
-        <%= render 'shared/index_6' %>
+        <%= render 'shared/index/index_5' %>
+        <%= render 'shared/index/index_6' %>
         <%# //商品がない場合のダミー %>
       <% end %>
     </ul>
