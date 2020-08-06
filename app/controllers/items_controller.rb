@@ -35,6 +35,6 @@ class ItemsController < ApplicationController
       :shipping_schedule_id,
       :price,
       :image
-    ).merge(user_id: current_user.id)
+    ).merge(user_id: current_user.id, sold_out: false)
   end
 end
