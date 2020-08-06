@@ -29,7 +29,7 @@
 | category          | integer | null: false |
 | condition         | integer | null: false |
 | shipping_fee      | integer | null: false |
-| shipping_from     | integer | null: false |
+| prefecture        | integer | null: false |
 | shipping_schedule | integer | null: false |
 | price             | integer | null: false |
 | user           | references | null: false, foreign_key: true |
@@ -42,7 +42,7 @@
 - has_one :address
 
 #### ActiveHash
-:category, :condition, :shipping_fee, :shipping_from, :shipping_schedule
+:category, :condition, :shipping_fee, :prefecture, :shipping_schedule
 
 
 ## comments table
@@ -75,7 +75,7 @@
 | Column        | Type    | Options     |
 | --------      | ------  | ----------- |
 | postal_code   | string  | null: false |
-| prefecture    | integer | null: false |
+| prefecture_id | integer | null: false |
 | city          | string  | null: false |
 | town          | string  | null: false |
 | building_name | string  |             |
