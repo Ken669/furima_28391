@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :redirect_to_sign_in, unless: :current_user, except: [:index]
+  before_action :redirect_to_sign_in, unless: :current_user, except: [:index, :show]
+  before_action :item_find, only: [:show, :destroy, :edit, :update]
 
   def index
     @items = Item.includes(:user)
@@ -18,7 +19,27 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    
+  end
+
+  def destroy
+    
+  end
+
+  def edit
+    
+  end
+
+  def update
+    
+  end
+
   private
+
+  def item_find
+    @item = Item.find(params[:id])
+  end
 
   def redirect_to_sign_in
     redirect_to new_user_session_path
