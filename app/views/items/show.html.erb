@@ -29,7 +29,7 @@
 
     <% if user_signed_in? %>
       <% if current_user.id == @item.user_id %>
-        <%= link_to '商品の編集', item_path(@item), method: :get, class: "item-red-btn" %>
+        <%= link_to '商品の編集', edit_item_path(@item), class: "item-red-btn" %>
         <p class='or-text'>or</p>
         <%= link_to '削除', item_path(@item), method: :delete, class:'item-destroy' %>
       <% else %>
@@ -40,7 +40,19 @@
     <% end %>
 
     <div class="item-explain-box">
-      <span><%= "商品説明" %></span>
+      <span>商品説明</span>
+    </div>
+
+    <div class="item-detail">
+      <% @text.each do |text| %>
+        <% if text == '' %>
+          <div style="height: 20px"></div>
+        <% else %>
+          <p style="font-size: 24px;">
+            <%= text %>
+          </p>
+        <% end %>
+      <% end %>
     </div>
     <%= render 'shared/item_detail' %>
 

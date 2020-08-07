@@ -1,12 +1,11 @@
 'use strict';
 setInterval(() => {
-  const currentPath = window.location.pathname;
-  if(currentPath === '/items/new' || currentPath === '/items'){
-    const price = document.getElementById('item-price');
-    const tax = document.getElementById('add-tax-price');
-    const profit = document.getElementById('profit');
-    const taxRatio = 0.1;
-  
+  const price = document.getElementById('item-price');
+  const tax = document.getElementById('add-tax-price');
+  const profit = document.getElementById('profit');
+  const taxRatio = 0.1;
+
+  if(price){
     price.addEventListener('keyup', ()=>{
       if (price.value < 300) {
         tax.textContent = 0;
