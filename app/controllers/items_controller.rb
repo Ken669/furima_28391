@@ -13,19 +13,31 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to @item
     else
       render :new
     end
+  end
+
+  def show
+    @text = @item.detail.split(/\r\n|\r|\n/)
   end
 
   def destroy
   end
 
   def edit
+    unless @item.user_id == current_user.id
+      render :show
+    end
   end
 
   def update
+    if @item.update(item_params)
+      redirect_to @item
+    else
+      render :edit
+    end
   end
 
   private
