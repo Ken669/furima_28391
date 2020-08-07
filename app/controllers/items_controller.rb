@@ -32,9 +32,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    unless @item.user_id == current_user.id
-      render :show
-    end
+    render :show unless @item.user_id == current_user.id
   end
 
   def update
