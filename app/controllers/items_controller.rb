@@ -24,12 +24,15 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    if @item.destroy
+      redirect_to @item
+    else
+      render :show
+    end
   end
 
   def edit
-    unless @item.user_id == current_user.id
-      render :show
-    end
+    render :show unless @item.user_id == current_user.id
   end
 
   def update
