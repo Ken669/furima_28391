@@ -4,15 +4,16 @@ setInterval(() => {
   if(chargeForm){
     Payjp.setPublicKey('pk_test_0475934debda6602e5ac13f0');
     chargeForm.addEventListener('submit', (event)=>{
-      event.preventDefault();
+      // event.preventDefault();
 
       const data = new FormData(chargeForm);
       const card = {
-        number: data.get('item[number]'),
-        exp_month: data.get('item[exp_month]'),
-        exp_year: data.get('item[exp_year]'),
-        cvc: `20${data.get('item[cvc]')}`
+        number: data.get('number'),
+        exp_month: data.get('exp_month'),
+        exp_year: data.get('exp_year'),
+        cvc: `20${data.get('cvc')}`
       };
+      console.log(card);
       // 
       Payjp.createToken(card, (status, res)=>{
         if(status === 200){

@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
   def new
     @item = Item.find(params[:item_id])
-    @purchase = Purchase.new
+    @address = Address.new
   end
 
   def create
