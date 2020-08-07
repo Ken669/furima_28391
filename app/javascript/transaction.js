@@ -6,16 +6,12 @@ setInterval(() => {
     chargeForm.addEventListener('submit', (event)=>{
       event.preventDefault();
 
-      const number = document.getElementById('card-number');
-      const exp_month = document.getElementById('card-exp-month');
-      const exp_year = document.getElementById('card-exp-year');
-      const cvc = document.getElementById('card-cvc');
-
+      const data = new FormData(chargeForm);
       const card = {
-        number: number.value,
-        exp_month: exp_month.value,
-        exp_year: `20${exp_year.value}`,
-        cvc: cvc.value,
+        number: data.get('item[number]'),
+        exp_month: data.get('item[exp_month]'),
+        exp_year: data.get('item[exp_year]'),
+        cvc: `20${data.get('item[cvc]')}`
       };
       // 
       Payjp.createToken(card, (status, res)=>{
@@ -24,10 +20,12 @@ setInterval(() => {
           const tokenObj = `<input value="${token}" type="hidden" name="token">`;
           chargeForm.insertAdjacentHTML('beforeend', tokenObj);
 
-          number.removeAttribute('name');
-          exp_month.removeAttribute('name');
-          exp_year.removeAttribute('name');
-          cvc.removeAttribute('name');
+          document.getElementById('card-number').removeAttribute('name');
+          document.getElementById('card-exp-month').removeAttribute('name');
+          document.getElementById('card-exp-year').removeAttribute('name');
+          document.getElementById('card-cvc').removeAttribute('name');
+          console.log(token);
+          console.log(document.getElementById('card-number'));
 
           chargeForm.submit();
           chargeForm.reset();
