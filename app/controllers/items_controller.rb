@@ -24,6 +24,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    if @item.destroy
+      redirect_to @item
+    else
+      render :show
+    end
   end
 
   def edit
