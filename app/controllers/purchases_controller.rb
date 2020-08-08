@@ -10,13 +10,11 @@ class PurchasesController < ApplicationController
     purchase = Purchase.new(item_id: params[:item_id], user_id: current_user.id)
     @item = purchase.item
     if @address.valid? && purchase.valid?
-      binding.pry
       buy_item
       @address.save
       purchase.save
       @item.sold_out = true
-      binding.pry
-      # redirect_to item_purchases_path(@item)
+      @item.save
     else
       render :new
     end
@@ -37,9 +35,8 @@ class PurchasesController < ApplicationController
     # Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
-      card: address_params[:token],
+      card: params[:token],
       currency: 'jpy'
     )
-    binding.pry
   end
 end

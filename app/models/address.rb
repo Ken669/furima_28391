@@ -6,7 +6,7 @@ class Address < ApplicationRecord
 
   with_options presence: true do
     validates :postal_code, format: {
-      with: /\A\d{3}-d{4}\z/,
+      with: /\A\d{3}-\d{4}\z/,
       message: 'only permits digits or requires hyphen(-).'
     }
     validates :city, format: {
@@ -26,9 +26,5 @@ class Address < ApplicationRecord
   validates :prefecture_id, numericality: {
     other_than: 0,
     message: "can't be blank."
-  }
-  validates :building_name, format: {
-    with: /\A[−ヶ々ァ-ンぁ-ん一-龥１-９ー\d-]+\z/,
-    message: 'prohibites alphabetic letters.'
   }
 end
