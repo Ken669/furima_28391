@@ -1,6 +1,6 @@
 'use strict';
 {
-  let ready = false;
+  let eventReady = false;
   setInterval(() => {
     const chargeForm = document.getElementById('charge-form');
     if(chargeForm){
@@ -39,9 +39,9 @@
           });
         });
       }
-      if(!ready){
+      if(!eventReady){
         createToken(chargeForm);
-        ready = true;
+        eventReady = true;
         console.log('1');
       }
     }
