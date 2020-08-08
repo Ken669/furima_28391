@@ -3,11 +3,15 @@ class PurchasesController < ApplicationController
 
   def new
     @item = Item.find(params[:item_id])
-    if @item.user_id == current_user.id || @item.sold_out
-      redirect_to '/'
+    if user_signed_in?
+      if @item.user_id == current_user.id || @item.sold_out
+        redirect_to '/'
+      else
+        @purchase = Purchase.new
+        @address = Address.new
+      end
     else
-      @purchase = Purchase.new
-      @address = Address.new
+      redirect_to new_user_session_path
     end
   end
 
