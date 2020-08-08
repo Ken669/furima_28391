@@ -10,7 +10,7 @@ RSpec.describe Address, type: :model do
       it 'when all are filled' do
         expect(@address.valid?).to eq true
       end
-      
+
       it 'without building name' do
         @address.building_name = nil
         expect(@address.valid?).to eq true

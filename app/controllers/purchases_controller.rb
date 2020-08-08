@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   before_action :redirect_to_sign_in, unless: :current_user
-  
+
   def new
     @item = Item.find(params[:item_id])
     if @item.user_id == current_user.id || @item.sold_out
