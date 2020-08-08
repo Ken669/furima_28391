@@ -6,6 +6,7 @@ class PurchasesController < ApplicationController
   end
 
   def create
+    # return
     @address = Address.new(address_params)
     purchase = Purchase.new(item_id: params[:item_id], user_id: current_user.id)
     @item = purchase.item
@@ -31,8 +32,7 @@ class PurchasesController < ApplicationController
   end
 
   def buy_item
-    Payjp.api_key = 'sk_test_9e00c98c40b3f79f09364de1'
-    # Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: params[:token],

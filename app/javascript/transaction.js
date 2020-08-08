@@ -4,11 +4,9 @@
   setInterval(() => {
     const chargeForm = document.getElementById('charge-form');
     if(chargeForm){
-      function createToken(chargeForm){
-        Payjp.setPublicKey('pk_test_0475934debda6602e5ac13f0');
-        chargeForm.addEventListener('submit', (event)=>{
-          // event.preventDefault();
-    
+      function addEvent(chargeForm){
+        Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
+        chargeForm.addEventListener('submit', ()=>{
           const data = new FormData(chargeForm);
           const card = {
             number: data.get('address[number]'),
@@ -27,22 +25,16 @@
               document.getElementById('card-exp-month').removeAttribute('name');
               document.getElementById('card-exp-year').removeAttribute('name');
               document.getElementById('card-cvc').removeAttribute('name');
-              console.log(token);
-              console.log(document.getElementById('card-number'));
     
               chargeForm.submit();
               chargeForm.reset();
-            }
-            else{
-              console.log('2');
             }
           });
         });
       }
       if(!eventReady){
-        createToken(chargeForm);
+        addEvent(chargeForm);
         eventReady = true;
-        console.log('1');
       }
     }
   }, 1000);
