@@ -1,12 +1,17 @@
 class PurchasesController < ApplicationController
+  before_action :redirect_to_sign_in, unless: :current_user
+  
   def new
     @item = Item.find(params[:item_id])
-    @purchase = Purchase.new
-    @address = Address.new
+    # unless @item.user_id == current_user.id
+      @purchase = Purchase.new
+      @address = Address.new
+    # else
+    #   redirect_to '/'
+    # end
   end
 
   def create
-    # return
     @address = Address.new(address_params)
     purchase = Purchase.new(item_id: params[:item_id], user_id: current_user.id)
     @item = purchase.item
@@ -38,5 +43,9 @@ class PurchasesController < ApplicationController
       card: params[:token],
       currency: 'jpy'
     )
+  end
+
+  def redirect_to_sign_in
+    redirect_to new_user_session_path
   end
 end
