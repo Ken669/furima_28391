@@ -3,11 +3,11 @@ class PurchasesController < ApplicationController
   
   def new
     @item = Item.find(params[:item_id])
-    unless @item.user_id == current_user.id
+    if @item.user_id == current_user.id || @item.sold_out
+      redirect_to '/'
+    else
       @purchase = Purchase.new
       @address = Address.new
-    else
-      redirect_to '/'
     end
   end
 
