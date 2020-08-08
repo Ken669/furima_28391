@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    redirect_to '/' if @item.user_id == current_user.id && @item.sold_out
     @text = @item.detail.split(/\r\n|\r|\n/)
   end
 
