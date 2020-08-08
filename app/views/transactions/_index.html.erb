@@ -34,8 +34,8 @@
     <%# /支払額の表示 %>
 
     <%= form_with(
-      url: item_purchases_path(@item), local: true,
-      id: 'charge-form', class: 'transaction-form-wrap'
+      url: item_purchases_path(@item), model: [@item, @purchase, @address],
+      local: true, id: 'charge-form', class: 'transaction-form-wrap'
     ) do |f| %>
 
       <%# カード情報の入力 %>

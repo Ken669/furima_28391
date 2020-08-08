@@ -15,20 +15,20 @@ class Address < ApplicationRecord
     }
     validates :town, format: {
       with: /\A[−ヶ々ァ-ンぁ-ん一-龥１-９ー\d-]+\z/,
-      message: 'alphabetic letters prohibited.'
+      message: 'prohibites alphabetic letters.'
     }
     validates :phone, format: {
       with: /\A\d{10,11}\z/,
-      message: 'permits digits only.'
+      message: 'permits 10 or 11 digits only.'
     }
   end
 
-  validates :prefecture, numericality: {
+  validates :prefecture_id, numericality: {
     other_than: 0,
     message: "can't be blank."
   }
   validates :building_name, format: {
     with: /\A[−ヶ々ァ-ンぁ-ん一-龥１-９ー\d-]+\z/,
-    message: 'alphabetic letters prohibited.'
+    message: 'prohibites alphabetic letters.'
   }
 end

@@ -11,10 +11,10 @@
     
           const data = new FormData(chargeForm);
           const card = {
-            number: data.get('number'),
-            exp_month: data.get('exp_month'),
-            exp_year: `20${data.get('exp_year')}`,
-            cvc: data.get('cvc')
+            number: data.get('address[number]'),
+            exp_month: data.get('address[exp_month]'),
+            exp_year: `20${data.get('address[exp_year]')}`,
+            cvc: data.get('address[cvc]')
           };
           // 
           Payjp.createToken(card, (status, res)=>{
