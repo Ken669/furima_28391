@@ -8,11 +8,10 @@
         Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
         chargeForm.addEventListener('submit', ()=>{
           const data = new FormData(chargeForm);
-          const year = data.get('address[exp_year]');
           const card = {
             number: data.get('address[number]'),
             exp_month: data.get('address[exp_month]'),
-            exp_year: year,
+            exp_year: 20 + data.get('address[exp_year]'),
             cvc: data.get('address[cvc]')
           };
           // 
