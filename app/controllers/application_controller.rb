@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth
   before_action :user_info_params, if: :devise_controller?
-  # before_action :store_destination, unless: :devise_or_home?
+  before_action :store_destination, unless: :devise_or_home?
 
   private
 
@@ -31,8 +31,8 @@ class ApplicationController < ActionController::Base
     devise_controller? || controller_name == 'home'
   end
   
-  # def after_sign_in_path_for(resource)
-  #   stored_location_for(resource) || root_path
-  #   # redirect_to this path after sign_in
-  # end
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || root_path
+    # redirect_to this path after sign_in
+  end
 end
